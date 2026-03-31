@@ -15,14 +15,14 @@
   },
   "dependencies": {
     "@fontsource/source-sans-pro": "^5.2.5",
-    "@ni/nimble-react": "^0.10.4",
+    "@ni/nimble-react": "^0.9.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@ni/eslint-config-javascript": "^5.1.4",
-    "@ni/eslint-config-typescript": "^5.0.5",
+    "@eslint/js": "^8.0.1",
+    "@ni/eslint-config-javascript": "^4.1.1",
+    "@ni/eslint-config-typescript": "^5.0.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",

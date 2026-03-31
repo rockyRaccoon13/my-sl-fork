@@ -1,0 +1,43 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["npm", "nuget", "github-actions"],
+  "rebaseWhen": "conflicted",
+  "schedule": ["monthly"],
+  "packageFiles": [
+    "package.json",
+    "**/package.json",
+    ".github/workflows/*.yml"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["npm", "nuget", "github-actions"],
+      "enabled": true
+    },
+    {
+      "groupName": "npm dependencies (excluding Angular/Blazor)",
+      "matchManagers": ["npm"],
+      "rangeStrategy": "update-lockfile",
+      "matchDepTypes": ["dependencies", "devDependencies", "peerDependencies"],
+      "major": { "enabled": true },
+      "matchPackageNames": [
+        "!/^@angular/",
+        "!/blazor/"
+      ],
+      "enabled": true
+    },
+    {
+      "groupName": "NuGet dependencies",
+      "matchManagers": ["nuget"],
+      "enabled": true,
+      "matchPackageNames": [
+        "!/Microsoft.Playwright/"
+      ]
+    },
+    {
+      "groupName": "GitHub Actions dependencies",
+      "matchManagers": ["github-actions"],
+      "enabled": true
+    }
+  ]
+}
