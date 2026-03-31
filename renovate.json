@@ -6,34 +6,27 @@
   "schedule": ["monthly"],
   "packageFiles": [
     "package.json",
-    "**/package.json"
+    "**/package.json",
+    ".github/workflows/*.yml"
   ],
   "packageRules": [
     {
-      "matchManagers": ["npm","nuget","github-actions"],
-      "enabled": false
+      "matchManagers": ["npm", "nuget", "github-actions"],
+      "enabled": true
     },
     {
-      "groupName": "npm dependencies update to latest",
+      "groupName": "npm dependencies (excluding Angular/Blazor)",
       "matchManagers": ["npm"],
       "rangeStrategy": "update-lockfile",
-      "matchDepTypes": ["dependencies","devDependencies","peerDependencies"],
-      "enabled": true,
+      "matchDepTypes": ["dependencies", "devDependencies", "peerDependencies"],
       "matchPackageNames": [
         "!/^@angular/",
-        "!/react/",
-        "!/blazor/",
-        "!/apache-arrow/",
-        "!/comlink/",
-        "!/eslint/",
-        "!/ng-packagr/",
-        "!/playwright/",
-        "!/typescript/",
-        "!/zone.js/"
-      ]
+        "!/blazor/"
+      ],
+      "enabled": true
     },
     {
-      "groupName": "nuget dependencies",
+      "groupName": "NuGet dependencies",
       "matchManagers": ["nuget"],
       "enabled": true,
       "matchPackageNames": [
@@ -41,7 +34,7 @@
       ]
     },
     {
-      "groupName": "github actions dependencies",
+      "groupName": "GitHub Actions dependencies",
       "matchManagers": ["github-actions"],
       "enabled": true
     }
