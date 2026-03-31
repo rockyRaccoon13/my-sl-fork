@@ -2,5 +2,64 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "enabledManagers": [
+    "npm",
+    "nuget",
+    "github-actions"
+  ],
+  "rebaseWhen": "conflicted",
+  "schedule": [
+    "monthly"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "npm",
+        "nuget",
+        "github-actions"
+      ],
+      "enabled": false
+    },
+    {
+      "groupName": "npm dependencies update to latest",
+      "matchManagers": [
+        "npm"
+      ],
+      "rangeStrategy": "update-lockfile",
+      "matchDepTypes": [
+        "dependencies",
+        "devDependencies",
+        "peerDependencies"
+      ],
+      "enabled": true,
+      "matchPackageNames": [
+        "!/^@angular/",
+        "!/apache-arrow/",
+        "!/comlink/",
+        "!/eslint/",
+        "!/ng-packagr/",
+        "!/playwright/",
+        "!/typescript/",
+        "!/zone.js/"
+      ]
+    },
+    {
+      "groupName": "nuget dependencies",
+      "matchManagers": [
+        "nuget"
+      ],
+      "enabled": true,
+      "matchPackageNames": [
+        "!/Microsoft.Playwright/"
+      ]
+    },
+    {
+      "groupName": "github actions dependencies",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "enabled": true
+    }
   ]
 }
